@@ -1,6 +1,6 @@
 import {youTubeApi} from "../api.ts";
 
-const youTubeKey = 'AIzaSyA3eiRpyWcr_bAl9czYI0GYuA04d9niJSM';
+const youTubeKey = 'AIzaSyDu0P-iPruZKZrHfgwY-JGjt6Ke1RxHTzc';
 
 interface Props {
     movieTitle: string | null;
