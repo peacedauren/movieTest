@@ -1,8 +1,9 @@
 import './styles.scss';
-import {Box, Container, TextField} from "@mui/material";
+import {Box, Button, Container, TextField} from "@mui/material";
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import {movieTitle} from "../store/serch-input-store/search-input-store.tsx";
 import {useLocation, useNavigate} from "react-router-dom";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 interface ILayout {
     children?: React.ReactNode;
@@ -12,8 +13,8 @@ export const Layout = ({children}: ILayout) => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const handleNavigate = () => {
-        navigate('/');
+    const handleNavigate = (link?: string) => {
+        navigate(`/${link}`);
     }
 
     return(
@@ -23,7 +24,7 @@ export const Layout = ({children}: ILayout) => {
                     <Box className="header__inner">
                         <Box
                             className="header__logo"
-                            onClick={handleNavigate}><LiveTvIcon
+                            onClick={() => handleNavigate('')}><LiveTvIcon
                             style={{color: 'red'}}
                             fontSize={'large'}
                         />
@@ -38,6 +39,9 @@ export const Layout = ({children}: ILayout) => {
                             onChange={(e) => movieTitle.setMovieTitle(e.target.value)}
                             disabled={location.pathname !== '/'}
                         />
+                        <Box>
+                            <Button onClick={() => handleNavigate('favorites')}><FavoriteBorderIcon fontSize={'large'} /></Button>
+                        </Box>
                     </Box>
                 </Container>
             </header>

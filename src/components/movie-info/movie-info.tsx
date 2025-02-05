@@ -18,7 +18,6 @@ export const MovieInfoComponent = () => {
         if(youTubeTrailer) {
             const link = youTubeTrailer.items[0].id.videoId;
             const trailerLink = `https://www.youtube.com/embed/${link}`;
-            console.log(trailerLink);
             setTrailer(trailerLink);
         }
     }, [youTubeTrailer]);
