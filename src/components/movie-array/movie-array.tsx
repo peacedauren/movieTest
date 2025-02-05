@@ -3,7 +3,7 @@ import {Box, Button, Card, CardMedia, Typography} from "@mui/material";
 import {favoriteMovies} from "../../store/favorites-store/favorites-store.tsx";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {observer} from "mobx-react-lite";
 
 interface Props {
@@ -12,6 +12,7 @@ interface Props {
 
 export const MovieArrayComponent = observer(({movies}: Props) => {
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleGoToMovie = (imdbId: string) => {
         navigate(`/movie/${imdbId}`);
@@ -61,7 +62,7 @@ export const MovieArrayComponent = observer(({movies}: Props) => {
                             </Box>
                         </Card>
                     </Box>
-                )) : ''
+                )) : (<Box sx={{fontSize: 40, marginTop: 'calc(35vh - 40px)', color: '#c68e17', width: '100%', display: 'flex', justifyContent: 'center'}}>{location.pathname === '/favorites' ? 'Вы еще не добавили фильмы в избранные' : 'Введите название фильма'}</Box>)
             }
         </Box>
     )

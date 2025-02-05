@@ -25,9 +25,9 @@ export const MovieListComponent = observer(() => {
 
     return(
             <Container sx={{marginTop: 2, marginBottom: 2}}>
-                <Box sx={{display: 'flex', flexWrap: 'wrap', gap: 2}}>
+                <Box sx={movieArray ? {display: 'flex', flexWrap: 'wrap', gap: 2} : {display: 'flex', justifyContent: 'center'}}>
                         {
-                            movieArray ? <MovieArrayComponent movies={movieArray} /> : ''
+                            movieArray ? <MovieArrayComponent movies={movieArray} /> : <Box sx={{fontSize: 40, marginTop: 'calc(35vh - 40px)', color: '#c68e17'}}>Введите название фильма</Box>
                         }
                 </Box>
                 <Box sx={{marginTop: 1, justifyContent: 'flex-end', display: 'flex'}}>
